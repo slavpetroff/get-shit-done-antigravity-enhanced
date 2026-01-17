@@ -65,7 +65,7 @@ Show last entry from `.gsd/JOURNAL.md`:
 
 ## 4. Check for Conflicts
 
-```powershell
+```bash
 # Check for uncommitted changes
 git status --porcelain
 ```

@@ -77,7 +77,7 @@ For each must-have:
 Run the verification command/action.
 
 // turbo
-```powershell
+```bash
 # Example: Run tests
 npm test
 ```
@@ -215,7 +215,7 @@ Gap closure plans created.
 
 ## 6. Commit Verification
 
-```powershell
+```bash
 git add .gsd/phases/{phase}/VERIFICATION.md
 git commit -m "docs(phase-{N}): verification report"
 ```

@@ -94,7 +94,7 @@ Create entry in `.gsd/JOURNAL.md`:
 
 ## 3. Commit State
 
-```powershell
+```bash
 git add .gsd/STATE.md .gsd/JOURNAL.md
 git commit -m "docs: pause session - {brief reason}"
 ```

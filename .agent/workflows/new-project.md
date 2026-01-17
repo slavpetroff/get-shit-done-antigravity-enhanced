@@ -25,6 +25,8 @@ This is the most leveraged moment in any project. Deep questioning here means be
 **MANDATORY FIRST STEP — Execute these checks before ANY user interaction:**
 
 1. **Abort if project exists:**
+
+   **PowerShell:**
    ```powershell
    if (Test-Path ".gsd/SPEC.md") {
        Write-Error "Project already initialized. Use /progress"
@@ -32,7 +34,17 @@ This is the most leveraged moment in any project. Deep questioning here means be
    }
    ```
 
+   **Bash:**
+   ```bash
+   if [ -f ".gsd/SPEC.md" ]; then
+       echo "Error: Project already initialized. Use /progress" >&2
+       exit 1
+   fi
+   ```
+
 2. **Initialize git repo** (if not exists):
+
+   **PowerShell:**
    ```powershell
    if (-not (Test-Path ".git")) {
        git init
@@ -40,7 +52,17 @@ This is the most leveraged moment in any project. Deep questioning here means be
    }
    ```
 
+   **Bash:**
+   ```bash
+   if [ ! -d ".git" ]; then
+       git init
+       echo "Initialized new git repo"
+   fi
+   ```
+
 3. **Detect existing code (brownfield detection):**
+
+   **PowerShell:**
    ```powershell
    $codeFiles = Get-ChildItem -Recurse -Include "*.ts","*.js","*.py","*.go","*.rs" | 
        Where-Object { $_.FullName -notmatch "node_modules|\.git" } | 
@@ -48,6 +70,15 @@ This is the most leveraged moment in any project. Deep questioning here means be
    
    $hasPackage = Test-Path "package.json" -or Test-Path "requirements.txt" -or Test-Path "Cargo.toml"
    $hasArchitecture = Test-Path ".gsd/ARCHITECTURE.md"
+   ```
+
+   **Bash:**
+   ```bash
+   code_files=$(find . -type f \( -name "*.ts" -o -name "*.js" -o -name "*.py" -o -name "*.go" -o -name "*.rs" \) \
+       -not -path '*/node_modules/*' -not -path '*/.git/*' | head -20)
+   
+   has_package=$(test -f "package.json" -o -f "requirements.txt" -o -f "Cargo.toml" && echo true || echo false)
+   has_architecture=$(test -f ".gsd/ARCHITECTURE.md" && echo true || echo false)
    ```
 
 ---
@@ -272,7 +303,7 @@ Create directories:
 
 ## Phase 9: Initial Commit
 
-```powershell
+```bash
 git add .gsd/
 git commit -m "chore: initialize GSD project
 

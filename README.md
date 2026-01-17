@@ -30,6 +30,7 @@ People who want to describe what they want and have it built correctly — witho
 
 ## 🚀 Getting Started
 
+**PowerShell (Windows):**
 ```powershell
 # Clone the GSD template
 git clone https://github.com/toonight/get-shit-done-for-antigravity.git gsd-template
@@ -42,6 +43,21 @@ Copy-Item -Recurse gsd-template\.gsd .\
 
 # Clean up
 Remove-Item -Recurse -Force gsd-template
+```
+
+**Bash (Linux/Mac):**
+```bash
+# Clone the GSD template
+git clone https://github.com/toonight/get-shit-done-for-antigravity.git gsd-template
+
+# Copy to your project
+cd your-project
+cp -r gsd-template/.agent ./
+cp -r gsd-template/.gemini ./
+cp -r gsd-template/.gsd ./
+
+# Clean up
+rm -rf gsd-template
 ```
 
 Then run `/new-project` and follow the prompts.
@@ -202,6 +218,17 @@ No "trust me, it works." Every verification produces evidence:
 | 💾 **State Persistence** | Update STATE.md after every task — memory across sessions |
 | 🧹 **Context Hygiene** | 3 failures → state dump → fresh session — prevents circular debugging |
 | ✅ **Empirical Validation** | Proof required — no "it should work" |
+
+---
+
+## 🌍 Cross-Platform Support
+
+All workflow files include **dual syntax** — both PowerShell and Bash commands:
+
+- **Windows users:** Use the PowerShell blocks
+- **Linux/Mac users:** Use the Bash blocks (some may require `jq` for JSON parsing)
+
+**Note:** Git commands (`git add`, `git commit`, `git tag`) are cross-platform and work identically on all systems.
 
 ---
 

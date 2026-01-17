@@ -21,11 +21,20 @@ Extract:
 
 ## 2. Validate Position
 
+**PowerShell:**
 ```powershell
 $totalPhases = (Select-String -Path ".gsd/ROADMAP.md" -Pattern "### Phase \d+").Count
 if ($position -lt 1 -or $position -gt $totalPhases + 1) {
     Write-Error "Invalid position. Valid: 1-$($totalPhases + 1)"
 }
+```
+
+**Bash:**
+```bash
+total_phases=$(grep -c "### Phase [0-9]" ".gsd/ROADMAP.md")
+if [ "$position" -lt 1 ] || [ "$position" -gt $((total_phases + 1)) ]; then
+    echo "Error: Invalid position. Valid: 1-$((total_phases + 1))" >&2
+fi
 ```
 
 ---
@@ -63,7 +72,7 @@ If currently in a phase >= position, update position reference.
 
 ## 7. Commit
 
-```powershell
+```bash
 git add -A
 git commit -m "docs: insert phase {N} - {name} (renumbered {M} phases)"
 ```

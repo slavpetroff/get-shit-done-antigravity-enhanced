@@ -35,12 +35,20 @@ This workflow should be run BEFORE `/plan` on brownfield projects to give the pl
 
 Check this is a valid project:
 
+**PowerShell:**
 ```powershell
 # Look for common project indicators
 $indicators = @(
     "package.json", "requirements.txt", "Cargo.toml", 
     "go.mod", "pom.xml", "*.csproj", "Gemfile"
 )
+```
+
+**Bash:**
+```bash
+# Look for common project indicators
+indicators=("package.json" "requirements.txt" "Cargo.toml" 
+    "go.mod" "pom.xml" "*.csproj" "Gemfile")
 ```
 
 Display banner:
@@ -56,9 +64,16 @@ Display banner:
 
 ### 2a. Directory Analysis
 
+**PowerShell:**
 ```powershell
 Get-ChildItem -Recurse -Directory | 
     Where-Object { $_.Name -notmatch "node_modules|\.git|__pycache__|dist|build" }
+```
+
+**Bash:**
+```bash
+find . -type d -not -path '*/node_modules/*' -not -path '*/.git/*' \
+    -not -path '*/__pycache__/*' -not -path '*/dist/*' -not -path '*/build/*'
 ```
 
 Identify:
@@ -70,9 +85,16 @@ Identify:
 ### 2b. Entry Points
 
 Find main files:
+**PowerShell:**
 ```powershell
 # Example for Node.js
 Get-Content "package.json" | ConvertFrom-Json | Select-Object -ExpandProperty main
+```
+
+**Bash:**
+```bash
+# Example for Node.js (requires jq)
+cat package.json | jq -r '.main'
 ```
 
 ### 2c. Component Detection
@@ -90,10 +112,17 @@ Scan for common patterns:
 
 ### 3a. Production Dependencies
 
+**PowerShell:**
 ```powershell
 # Node.js example
 Get-Content "package.json" | ConvertFrom-Json | 
     Select-Object -ExpandProperty dependencies
+```
+
+**Bash:**
+```bash
+# Node.js example (requires jq)
+cat package.json | jq '.dependencies'
 ```
 
 For each dependency, note:
@@ -110,7 +139,7 @@ Same for devDependencies, noting:
 
 ### 3c. Outdated Packages
 
-```powershell
+```bash
 npm outdated
 # or
 pip list --outdated
@@ -123,6 +152,7 @@ pip list --outdated
 ### 4a. External Integrations
 
 Search for:
+**PowerShell:**
 ```powershell
 # API calls
 Select-String -Path "src/**/*" -Pattern "fetch\(|axios\.|http\."
@@ -132,6 +162,18 @@ Select-String -Path "**/*" -Pattern "DATABASE_URL|mongodb|postgres|mysql"
 
 # Third-party services
 Select-String -Path "**/*" -Pattern "stripe|sendgrid|twilio|aws-sdk"
+```
+
+**Bash:**
+```bash
+# API calls
+grep -rE 'fetch\(|axios\.|http\.' src/
+
+# Database connections
+grep -rE 'DATABASE_URL|mongodb|postgres|mysql' .
+
+# Third-party services
+grep -rE 'stripe|sendgrid|twilio|aws-sdk' .
 ```
 
 ### 4b. Internal Flow
@@ -147,12 +189,22 @@ Trace how data moves:
 ### 5a. Code Smells
 
 Search for indicators:
+**PowerShell:**
 ```powershell
 # TODOs and FIXMEs
 Select-String -Path "src/**/*" -Pattern "TODO|FIXME|HACK|XXX"
 
 # Deprecated markers
 Select-String -Path "**/*" -Pattern "@deprecated|DEPRECATED"
+```
+
+**Bash:**
+```bash
+# TODOs and FIXMEs
+grep -rE 'TODO|FIXME|HACK|XXX' src/
+
+# Deprecated markers
+grep -rE '@deprecated|DEPRECATED' .
 ```
 
 ### 5b. Pattern Inconsistencies
@@ -290,7 +342,7 @@ Codebase mapping complete.
 
 ## 9. Commit Documentation
 
-```powershell
+```bash
 git add .gsd/ARCHITECTURE.md .gsd/STACK.md .gsd/STATE.md
 git commit -m "docs: map existing codebase"
 ```

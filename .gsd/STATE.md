@@ -3,16 +3,18 @@
 > **Purpose**: Persistent state across sessions. Updated after EVERY task.
 
 ## Current Position
-- **Phase**: 1 (Complete Missing Workflows)
-- **Task**: Ready to execute
-- **Status**: Planning complete, awaiting execution
+- **Milestone**: v1.2 (Cross-Platform Support) ✅ Complete
+- **Phase**: All phases complete
+- **Status**: Milestone complete, ready for next initiative
 
 ## Last Session Summary
-Ran `/map` on the GSD project itself (dogfooding).
-- Created comprehensive ARCHITECTURE.md with system diagram
-- Created STACK.md with technology inventory
-- Identified 4 technical debt items
-- Created ROADMAP.md with 3 improvement phases
+**Session 2026-01-17 (v1.2 Cross-Platform)**:
+- Added Bash equivalents to all 16 workflow files (56+ blocks)
+- Updated README with cross-platform instructions
+- Phase 1: Core workflows (`execute.md`, `map.md`, `plan.md`, `verify.md`)
+- Phase 2: Utility workflows (`debug.md`, `pause.md`, `resume.md`, `new-project.md`, etc.)
+- Phase 3: Phase management workflows (`insert-phase.md`, `remove-phase.md`, etc.)
+- Phase 4: Documentation (README cross-platform section)
 
 ## Blockers
 - None
@@ -22,18 +24,19 @@ Ran `/map` on the GSD project itself (dogfooding).
 |----------|-----------|------|
 | Dogfood the methodology | Proves system works, improves docs | 2026-01-17 |
 | Focus on utility workflows first | Low-hanging fruit, immediate value | 2026-01-17 |
+| Template parity priority | Ensures feature completeness | 2026-01-17 |
+| Tab-based dual syntax | Clear, scannable for both platforms | 2026-01-17 |
 
-## Next Steps
-1. Execute Phase 1: Create /add-todo and /check-todos workflows
-2. Create TODO.md template
-3. Verify workflows work correctly
+## Next Steps (Choose One)
+1. **v1.3: Automation** — Add integration tests and version tracking
+2. **Custom milestone** — User defines a new improvement area
 
 ## Context Dump
-Using GSD methodology to improve GSD:
-- SPEC.md finalized with improvement goals
-- /map completed, system structure documented
-- /plan completed, 3 phases defined
-- Ready for /execute 1
+v1.2 Cross-Platform Support milestone is complete:
+- ✅ All 16 workflow files have Bash equivalents
+- ✅ README updated with dual syntax Getting Started
+- ✅ README updated with Cross-Platform Support section
+- ✅ Git commands converted to `bash` syntax (cross-platform)
 
 ---
 

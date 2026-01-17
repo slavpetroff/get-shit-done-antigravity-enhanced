@@ -13,10 +13,18 @@ Define a new milestone with goal, phases, and success criteria.
 
 ## 1. Validate SPEC Exists
 
+**PowerShell:**
 ```powershell
 if (-not (Test-Path ".gsd/SPEC.md")) {
     Write-Error "SPEC.md required. Run /new-project first."
 }
+```
+
+**Bash:**
+```bash
+if [ ! -f ".gsd/SPEC.md" ]; then
+    echo "Error: SPEC.md required. Run /new-project first." >&2
+fi
 ```
 
 ---
@@ -89,7 +97,7 @@ Ask user to confirm or modify.
 
 ## 6. Commit
 
-```powershell
+```bash
 git add .gsd/ROADMAP.md .gsd/STATE.md
 git commit -m "docs: create milestone {name}"
 ```

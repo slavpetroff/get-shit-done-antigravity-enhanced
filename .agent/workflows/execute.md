@@ -40,9 +40,16 @@ Orchestrator stays lean: discover plans, analyze dependencies, group into waves,
 
 ## 1. Validate Environment
 
+**PowerShell:**
 ```powershell
 Test-Path ".gsd/ROADMAP.md"
 Test-Path ".gsd/STATE.md"
+```
+
+**Bash:**
+```bash
+test -f ".gsd/ROADMAP.md"
+test -f ".gsd/STATE.md"
 ```
 
 **If not found:** Error — user should run `/plan` first.
@@ -51,9 +58,16 @@ Test-Path ".gsd/STATE.md"
 
 ## 2. Validate Phase Exists
 
+**PowerShell:**
 ```powershell
 # Check phase exists in roadmap
 Select-String -Path ".gsd/ROADMAP.md" -Pattern "Phase $PHASE:"
+```
+
+**Bash:**
+```bash
+# Check phase exists in roadmap
+grep "Phase $PHASE:" ".gsd/ROADMAP.md"
 ```
 
 **If not found:** Error with available phases from ROADMAP.md.
@@ -62,6 +76,7 @@ Select-String -Path ".gsd/ROADMAP.md" -Pattern "Phase $PHASE:"
 
 ## 3. Ensure Phase Directory Exists
 
+**PowerShell:**
 ```powershell
 $PHASE_DIR = ".gsd/phases/$PHASE"
 if (-not (Test-Path $PHASE_DIR)) {
@@ -69,17 +84,36 @@ if (-not (Test-Path $PHASE_DIR)) {
 }
 ```
 
+**Bash:**
+```bash
+PHASE_DIR=".gsd/phases/$PHASE"
+mkdir -p "$PHASE_DIR"
+```
+
 ---
 
 ## 4. Discover Plans
 
+**PowerShell:**
 ```powershell
 Get-ChildItem "$PHASE_DIR/*-PLAN.md"
 ```
 
+**Bash:**
+```bash
+ls "$PHASE_DIR"/*-PLAN.md 2>/dev/null
+```
+
 **Check for existing summaries** (completed plans):
+
+**PowerShell:**
 ```powershell
 Get-ChildItem "$PHASE_DIR/*-SUMMARY.md"
+```
+
+**Bash:**
+```bash
+ls "$PHASE_DIR"/*-SUMMARY.md 2>/dev/null
 ```
 
 **Build list of incomplete plans** (PLAN without matching SUMMARY).
@@ -129,7 +163,7 @@ For each plan in the current wave:
 2. **Execute tasks** — Follow `<task>` blocks in order
 3. **Verify each task** — Run `<verify>` commands
 4. **Commit per task:**
-   ```powershell
+   ```bash
    git add -A
    git commit -m "feat(phase-{N}): {task-name}"
    ```
@@ -194,7 +228,7 @@ Phase {N} executed successfully. {X} plans, {Y} tasks completed.
 
 ## 9. Commit Phase Completion
 
-```powershell
+```bash
 git add .gsd/ROADMAP.md .gsd/STATE.md
 git commit -m "docs(phase-{N}): complete {phase-name}"
 ```

@@ -103,6 +103,7 @@ Discovery is MANDATORY unless you can prove current context exists.
 
 ## 1. Validate Environment (Planning Lock)
 
+**PowerShell:**
 ```powershell
 # Check SPEC.md exists and is finalized
 $spec = Get-Content ".gsd/SPEC.md" -Raw
@@ -110,6 +111,15 @@ if ($spec -notmatch "FINALIZED") {
     Write-Error "SPEC.md must be FINALIZED before planning"
     exit
 }
+```
+
+**Bash:**
+```bash
+# Check SPEC.md exists and is finalized
+if ! grep -q "FINALIZED" ".gsd/SPEC.md"; then
+    echo "Error: SPEC.md must be FINALIZED before planning" >&2
+    exit 1
+fi
 ```
 
 **If not finalized:** Error — user must complete SPEC.md first.
@@ -130,8 +140,14 @@ Extract from $ARGUMENTS:
 
 ## 3. Validate Phase
 
+**PowerShell:**
 ```powershell
 Select-String -Path ".gsd/ROADMAP.md" -Pattern "Phase $PHASE:"
+```
+
+**Bash:**
+```bash
+grep "Phase $PHASE:" ".gsd/ROADMAP.md"
 ```
 
 **If not found:** Error with available phases.
@@ -141,11 +157,18 @@ Select-String -Path ".gsd/ROADMAP.md" -Pattern "Phase $PHASE:"
 
 ## 4. Ensure Phase Directory
 
+**PowerShell:**
 ```powershell
 $PHASE_DIR = ".gsd/phases/$PHASE"
 if (-not (Test-Path $PHASE_DIR)) {
     New-Item -ItemType Directory -Path $PHASE_DIR
 }
+```
+
+**Bash:**
+```bash
+PHASE_DIR=".gsd/phases/$PHASE"
+mkdir -p "$PHASE_DIR"
 ```
 
 ---
@@ -157,8 +180,14 @@ if (-not (Test-Path $PHASE_DIR)) {
 **If `--skip-research` flag:** Skip to step 6.
 
 **Check for existing research:**
+**PowerShell:**
 ```powershell
 Test-Path "$PHASE_DIR/RESEARCH.md"
+```
+
+**Bash:**
+```bash
+test -f "$PHASE_DIR/RESEARCH.md"
 ```
 
 **If RESEARCH.md exists AND `--research` flag NOT set:**
@@ -279,7 +308,7 @@ Update `.gsd/STATE.md`:
 
 ## 9. Commit Plans
 
-```powershell
+```bash
 git add .gsd/phases/$PHASE/
 git add .gsd/STATE.md
 git commit -m "docs(phase-$PHASE): create execution plans"

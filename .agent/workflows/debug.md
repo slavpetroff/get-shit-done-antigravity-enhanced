@@ -24,8 +24,14 @@ Systematically diagnose an issue using hypothesis-driven debugging, with persist
 ## 1. Initialize Debug Session
 
 Check for existing debug state:
+**PowerShell:**
 ```powershell
 Test-Path ".gsd/DEBUG.md"
+```
+
+**Bash:**
+```bash
+test -f ".gsd/DEBUG.md"
 ```
 
 If exists, load previous attempts. If not, create new session.
@@ -62,12 +68,25 @@ Create/update `.gsd/DEBUG.md`:
 
 Collect data BEFORE forming hypotheses:
 
+**PowerShell:**
 ```powershell
 # Get error details
 {relevant commands to capture error info}
 
 # Check logs
 Get-Content logs/error.log -Tail 50
+
+# Check environment
+{relevant environment checks}
+```
+
+**Bash:**
+```bash
+# Get error details
+{relevant commands to capture error info}
+
+# Check logs
+tail -50 logs/error.log
 
 # Check environment
 {relevant environment checks}
@@ -152,7 +171,7 @@ Update DEBUG.md and recommend next steps.
 ## 8. Commit Resolution
 
 If fixed:
-```powershell
+```bash
 git add -A
 git commit -m "fix: {brief description of fix}"
 ```
