@@ -259,6 +259,26 @@ GSD-STYLE.md          # Complete style guide
 
 ---
 
+## 🧪 Testing
+
+Run validation scripts to verify GSD structure:
+
+**PowerShell:**
+```powershell
+.\scripts\validate-all.ps1      # Run all validators
+.\scripts\validate-workflows.ps1  # Workflows only
+.\scripts\validate-skills.ps1     # Skills only
+```
+
+**Bash:**
+```bash
+./scripts/validate-all.sh      # Run all validators
+./scripts/validate-workflows.sh  # Workflows only
+./scripts/validate-skills.sh     # Skills only
+```
+
+---
+
 ## 📚 Documentation
 
 - [GSD-STYLE.md](GSD-STYLE.md) — Complete style and conventions guide

@@ -10,12 +10,44 @@ Display recent changes, new features, and improvements to GSD for Antigravity.
 
 <process>
 
-Display this directly:
+## 1. Read CHANGELOG.md
+
+```bash
+# Read the latest version section from CHANGELOG.md
+head -50 CHANGELOG.md
+```
+
+## 2. Display Recent Changes
+
+Display the latest version(s) from CHANGELOG.md:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  GSD ► WHAT'S NEW
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+VERSION 1.2.0 — 2026-01-17
+══════════════════════════
+
+🌍 CROSS-PLATFORM SUPPORT
+
+• All 16 workflow files now have Bash equivalents
+• README with dual-syntax Getting Started
+• /web-search workflow for research
+
+───────────────────────────────────────────────────────
+
+VERSION 1.1.0 — 2026-01-17
+══════════════════════════
+
+📚 TEMPLATE PARITY & EXAMPLES
+
+• 14 new templates (DEBUG.md, UAT.md, etc.)
+• Examples directory with walkthroughs
+• /add-todo and /check-todos workflows
+• Cross-references between workflows
+
+───────────────────────────────────────────────────────
 
 VERSION 1.0.0 — 2026-01-17
 ══════════════════════════
@@ -23,38 +55,9 @@ VERSION 1.0.0 — 2026-01-17
 🎉 INITIAL RELEASE
 
 Full port of GSD methodology to Google Antigravity.
-
-NEW COMMANDS (24)
-─────────────────
-• /new-project — Deep questioning initialization
-• /new-milestone — Create milestones with phases
-• /complete-milestone — Archive and tag
-• /audit-milestone — Quality review
-• /add-phase, /insert-phase, /remove-phase
-• /discuss-phase, /research-phase
-• /list-phase-assumptions
-• /plan-milestone-gaps
-• /map, /plan, /execute, /verify, /debug
-• /progress, /pause, /resume
-• /add-todo, /check-todos
-• /help, /whats-new, /update
-
-NEW SKILLS (8)
-──────────────
-• planner, executor, verifier, debugger
-• codebase-mapper, plan-checker
-• context-health-monitor, empirical-validation
-
-NEW TEMPLATES (4)
-─────────────────
-• PLAN.md, VERIFICATION.md
-• RESEARCH.md, SUMMARY.md
-
-NEW EXAMPLES (3)
-────────────────
-• workflow-example.md — Full walkthrough
-• quick-reference.md — Printable card
-• cross-platform.md — PowerShell ↔ Bash
+• 24 workflows, 8 skills, 14 templates
+• 4 core rules: Planning Lock, State Persistence,
+  Context Hygiene, Empirical Validation
 
 ───────────────────────────────────────────────────────
 
@@ -64,3 +67,14 @@ NEW EXAMPLES (3)
 ```
 
 </process>
+
+<related>
+## Related
+
+### Workflows
+| Command | Relationship |
+|---------|--------------|
+| `/update` | Update GSD to latest version |
+| `/help` | List all commands |
+
+</related>

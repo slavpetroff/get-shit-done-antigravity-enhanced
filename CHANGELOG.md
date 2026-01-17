@@ -2,6 +2,52 @@
 
 All notable changes to GSD for Antigravity.
 
+## [1.3.0] - 2026-01-17
+
+### Added
+- **Validation Scripts** — expanded testing infrastructure
+  - `validate-skills.ps1/.sh` — verify skill directory structure
+  - `validate-all.ps1/.sh` — master script runs all validators
+- **VERSION file** — single source of truth for version
+- `/help` now displays current version
+
+### Changed
+- README.md updated with Testing section
+
+---
+
+## [1.2.0] - 2026-01-17
+
+### Added
+- **Cross-Platform Support** — All 16 workflow files now have Bash equivalents
+- `/web-search` — Search the web for technical research
+
+### Changed
+- README.md updated with dual-syntax Getting Started (PowerShell + Bash)
+- README.md added Cross-Platform Support section
+- Git commands in workflows use `bash` syntax (cross-platform)
+
+---
+
+## [1.1.0] - 2026-01-17
+
+### Added
+- **Template Parity** — 14 templates aligned with original repository
+  - `DEBUG.md`, `UAT.md`, `discovery.md`, `requirements.md`, etc.
+- **Examples** — `.gsd/examples/` directory
+  - `workflow-example.md` — Full workflow walkthrough
+  - `quick-reference.md` — Command cheat sheet
+  - `cross-platform.md` — Platform-specific guidance
+- `/add-todo` — Quick capture workflow
+- `/check-todos` — List pending items workflow
+- `/whats-new` — Show recent changes
+
+### Changed
+- Workflows now have "Related" sections for discoverability
+- Cross-linked workflows and skills
+
+---
+
 ## [1.0.0] - 2026-01-17
 
 ### Added

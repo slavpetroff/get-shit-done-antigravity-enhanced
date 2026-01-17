@@ -19,11 +19,20 @@
 
 ---
 
+## v1.3: Automation ✅
+
+> **Complete**
+
+- [x] **Phase 1**: Expand Validation Scripts — add skill/template validators
+- [x] **Phase 2**: Version Tracking — VERSION file, /help integration
+- [x] **Phase 3**: Documentation — README testing section, CHANGELOG
+
+---
+
 ## Next Milestone Ideas
 
-### v1.3: Automation
-- [ ] Add integration tests for workflows
-- [ ] Add version tracking
+### v1.4: TBD
+- [ ] User-defined improvements
 
 ---
 
