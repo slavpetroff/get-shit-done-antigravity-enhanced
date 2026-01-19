@@ -292,19 +292,7 @@ GSD-STYLE.md          # Complete style guide
 
 ---
 
-## Typical Session
 
-```
-/resume              ← Load context from last session
-/progress            ← See where you left off
-/discuss-phase 2     ← Clarify requirements (optional)
-/plan 2              ← Plan next phase
-/execute 2           ← Implement with atomic commits
-/verify 2            ← Prove it works (screenshots, tests)
-/pause               ← Save state for later
-```
-
----
 
 ## 🧪 Testing
 
