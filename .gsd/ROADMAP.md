@@ -102,20 +102,22 @@
 - [ ] Define Sub-Agent Roles (Researcher, Implementer, Reviewer)
 - [ ] Update `/execute` to optionally dispatch sub-agents
 
-## Phase 13: Persistent Context Memory
+## Phase 13: Unified Context Recall (was Persistent Memory)
 
-**Status**: 📅 Planned
-**Objective**: Implement long-term memory for project patterns and "lessons learned".
+**Status**: ✅ Complete
+**Objective**: Simplify context injection by creating a single `recall_context.py` script that aggregates Architecture (Memory), Skills, MCPs, and Library Intelligence.
 **Tasks**:
 
-- [ ] Implement Vector or Graph-based memory system
-- [ ] Integrate "Recall" step into `/map` and `/plan`
+- [x] Create `scripts/recall_context.py`
+- [x] Update workflows to use Unified Recall
+- [x] Sync Templates
 
 ## Phase 14: Kaizen Loop (Self-Optimization)
 
-**Status**: 📅 Planned
+**Status**: ✅ Complete
 **Objective**: Enable the system to propose and merge updates to its own skills.
 **Tasks**:
 
-- [ ] Implement `scripts/propose_skill_update.py`
-- [ ] Workflow for reviewing self-proposed improvements
+- [x] Implement `scripts/propose_improvement.py`
+- [x] Implement `scripts/review_proposal.py`
+- [x] Integrate Kaizen Loop into `/execute` workflow
