@@ -197,6 +197,27 @@ For each plan in the current wave:
 
 1. **Execute tasks** — Follow `<task>` blocks in order
 1. **Verify each task** — Run `<verify>` commands
+   - **IF VERIFICATION FAILS:**
+     1. **Trigger Kaizen Loop**:
+
+        ```bash
+        # Analyze failure and propose fix
+        PROPOSAL=$(python3 scripts/propose_improvement.py "{task-objective}" "{failure-output}")
+
+        # Review proposal (Sub-Agent)
+        REVIEW=$(echo "$PROPOSAL" | python3 scripts/review_proposal.py)
+
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "⚠ VERIFICATION FAILED — KAIZEN LOOP INITIATED"
+        echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+        echo "$PROPOSAL"
+        echo "Reviewer Verdict: $REVIEW"
+        ```
+
+     2. **Ask User**: "Apply proposed improvement? [y/N]"
+     3. **If Yes**: Apply the change to the skill/workflow.
+     4. **Retry Verification**: Run `<verify>` again.
+
 1. **Commit per task:**
    ```bash
    git add -A
