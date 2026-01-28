@@ -87,3 +87,35 @@
 - [x] Update `.gsd/templates/` with new scripts/constants
 - [x] Create `setup.sh` or update installation instructions
 - [x] Run `/verify` on GSD repo (self-check)
+
+# Milestone v3.0: Intelligent Agent Orchestration
+
+**Goal**: Transform GSD from a passive context manager into an active, intelligent orchestrator that uses sub-agents and persistent memory.
+
+## Phase 12: Sub-Agent Dispatch System
+
+**Status**: 📅 Planned
+**Objective**: Implement tools and workflows for delegating tasks to specialized sub-agents.
+**Tasks**:
+
+- [ ] Create `scripts/dispatch_agent.py` or `agent_tools.py`
+- [ ] Define Sub-Agent Roles (Researcher, Implementer, Reviewer)
+- [ ] Update `/execute` to optionally dispatch sub-agents
+
+## Phase 13: Persistent Context Memory
+
+**Status**: 📅 Planned
+**Objective**: Implement long-term memory for project patterns and "lessons learned".
+**Tasks**:
+
+- [ ] Implement Vector or Graph-based memory system
+- [ ] Integrate "Recall" step into `/map` and `/plan`
+
+## Phase 14: Kaizen Loop (Self-Optimization)
+
+**Status**: 📅 Planned
+**Objective**: Enable the system to propose and merge updates to its own skills.
+**Tasks**:
+
+- [ ] Implement `scripts/propose_skill_update.py`
+- [ ] Workflow for reviewing self-proposed improvements
