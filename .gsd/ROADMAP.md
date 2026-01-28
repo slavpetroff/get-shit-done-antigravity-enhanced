@@ -31,12 +31,14 @@
 **Objective**: (Merged with Phase 3) Validation suite covers integration; polish applied via heuristic fixes.
 
 ### Phase 7: Skills Registry Optimization
+
 **Status**: ⬜ Not Started
 **Objective**: Refactor SKILLS.md to use a categorized index pointing to individual skill files to reduce file size and improve retrieval.
 **Depends on**: Phase 6
 
 **Tasks**:
-- [ ] Create categorization logic
-- [ ] Refactor SKILLS.md
-- [ ] Verify registry integrity
 
+- [ ] Create `scripts/categorize_skills.py`
+- [ ] Update `sync-skills` workflow
+- [ ] Refactor `gsd_select.py` for lazy loading (if needed)
+- [ ] Verify `SKILLS.md` size reduction and link integrity
