@@ -40,9 +40,10 @@ cd your-project
 git clone https://github.com/toonight/get-shit-done-for-antigravity.git gsd-template
 
 # Copy to your project
-Copy-Item -Recurse gsd-template\.agent .\
+Copy-Item -Recurse gsd-template\.gsd\templates\.agent .\.agent
 Copy-Item -Recurse gsd-template\.gemini .\
 Copy-Item -Recurse gsd-template\.gsd .\
+Copy-Item -Recurse gsd-template\.gsd\templates\scripts .\scripts
 
 # Clean up
 Remove-Item -Recurse -Force gsd-template
@@ -58,10 +59,10 @@ cd your-project
 git clone https://github.com/toonight/get-shit-done-for-antigravity.git gsd-template
 
 # Copy to your project
-cp -r gsd-template/.agent ./
+cp -r gsd-template/.gsd/templates/.agent ./.agent
 cp -r gsd-template/.gemini ./
 cp -r gsd-template/.gsd ./
-cp -r gsd-template/scripts ./
+cp -r gsd-template/.gsd/templates/scripts ./scripts
 
 # Clean up
 rm -rf gsd-template
