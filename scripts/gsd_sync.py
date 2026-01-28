@@ -4,6 +4,7 @@ import re
 import json
 import datetime
 import sys
+import xml.etree.ElementTree as ET
 
 # --- Configuration ---
 SKILLS_DIR = ".agent/skills"
@@ -176,31 +177,30 @@ def update_inventory(path, category, items):
         human_content = "## [NO ITEMS DISCOVERED]\n_Run discovery again or check configuration paths._\n"
     
     # 2. Generate XML block
-    xml_lines = []
+    root = ET.Element("gsd_registry", type=category)
+    root.append(ET.Comment(" MACHINE-READABLE REGISTRY "))
     for item in items:
-        xml_lines.append(f'    <item id="{item["id"]}" confidence="{item["confidence"]}">')
-        xml_lines.append(f'        <name>{item["name"]}</name>')
-        xml_lines.append(f'        <path>{item["path"]}</path>')
-        xml_lines.append(f'        <description>{item["description"]}</description>')
-        xml_lines.append(f'    </item>')
+        item_el = ET.SubElement(root, "item", id=item["id"], confidence=str(item["confidence"]))
+        ET.SubElement(item_el, "name").text = item["name"]
+        ET.SubElement(item_el, "path").text = item["path"]
+        ET.SubElement(item_el, "description").text = item["description"]
     
-    xml_registry = "\n".join(xml_lines)
+    # Pretty print XML
+    xml_registry = ET.tostring(root, encoding='utf-8').decode('utf-8')
+    # Simple indent for readability
+    xml_registry = xml_registry.replace('<item', '\n    <item').replace('</item>', '\n    </item>').replace('</gsd_registry>', '\n</gsd_registry>').replace('<name', '\n        <name').replace('<path', '\n        <path').replace('<description', '\n        <description')
     
     # 3. Perform Reflective Swap
     # Replace content between first --- and <gsd_registry> tag
     # or just replace everything after the header.
     
     # Locate the registry tag
-    tag_match = re.search(r'(<gsd_registry.*?>).*?(</gsd_registry>)', content, re.DOTALL)
+    tag_match = re.search(r'<gsd_registry.*?>.*?</gsd_registry>', content, re.DOTALL)
     if not tag_match:
         print(f"Error: Registry tag not found in {path}")
         return
-        
-    start_tag = tag_match.group(1)
-    end_tag = tag_match.group(2)
     
     # Locate the "header" - everything before the first "---" (excluding frontmatter)
-    # If frontmatter exists, the first "---" is at the start.
     header_parts = re.split(r'\n---\n', content)
     if len(header_parts) > 1:
         header = header_parts[0].strip()
@@ -218,10 +218,7 @@ This file is both a human-readable inventory and a machine-readable registry. GS
 
 {human_content}
 
-{start_tag}
-    <!-- MACHINE-READABLE REGISTRY -->
 {xml_registry}
-{end_tag}
 """
     with open(path, 'w', encoding='utf-8') as f:
         f.write(new_content)

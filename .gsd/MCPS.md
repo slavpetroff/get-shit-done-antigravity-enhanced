@@ -16,7 +16,5 @@ This file is both a human-readable inventory and a machine-readable registry. GS
 _Run discovery again or check configuration paths._
 
 
-<gsd_registry>
-    <!-- MACHINE-READABLE REGISTRY -->
-
+<gsd_registry type="mcp_servers"><!-- MACHINE-READABLE REGISTRY -->
 </gsd_registry>

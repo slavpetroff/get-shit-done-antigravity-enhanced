@@ -227,8 +227,7 @@ Validates implemented work against spec requirements with empirical evidence
 ---
 
 
-<gsd_registry>
-    <!-- MACHINE-READABLE REGISTRY -->
+<gsd_registry type="skills"><!-- MACHINE-READABLE REGISTRY -->
     <item id="codebase-mapper" confidence="0.5">
         <name>GSD Codebase Mapper</name>
         <path>.agent/skills/codebase-mapper/SKILL.md</path>
