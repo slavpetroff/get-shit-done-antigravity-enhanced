@@ -10,14 +10,15 @@ Conduct technical research to inform planning decisions for a phase.
 </objective>
 
 <discovery_levels>
+
 ## Discovery Levels
 
-| Level | Time | Use When |
-|-------|------|----------|
-| 0 | 0 min | Already know, just doing it |
-| 1 | 2-5 min | Single library, confirming syntax |
-| 2 | 15-30 min | Choosing between options, new integration |
-| 3 | 1+ hour | Architectural decision, novel problem |
+| Level | Time      | Use When                                  |
+| ----- | --------- | ----------------------------------------- |
+| 0     | 0 min     | Already know, just doing it               |
+| 1     | 2-5 min   | Single library, confirming syntax         |
+| 2     | 15-30 min | Choosing between options, new integration |
+| 3     | 1+ hour   | Architectural decision, novel problem     |
 
 **Default:** Level 2 unless specified.
 </discovery_levels>
@@ -27,13 +28,32 @@ Conduct technical research to inform planning decisions for a phase.
 ## 1. Load Phase Context
 
 Read:
+
 - Phase objective from ROADMAP.md
 - Relevant ARCHITECTURE.md sections
 - STACK.md for current technologies
 
 ---
 
-## 2. Identify Research Questions
+## 2. Context Retrieval (RAG)
+
+**PowerShell:**
+
+```powershell
+python3 scripts/gsd_select.py "Phase $PHASE research"
+```
+
+**Bash:**
+
+```bash
+python3 scripts/gsd_select.py "Phase $PHASE research"
+```
+
+_Copy the output into your context to ensure you use the right skills._
+
+---
+
+## 3. Identify Research Questions
 
 What needs to be understood before planning?
 
@@ -52,15 +72,18 @@ What needs to be understood before planning?
 Based on discovery level:
 
 **Level 1:** Quick verification
+
 - Check official docs
 - Confirm API/syntax
 
 **Level 2:** Comparison research
+
 - Compare 2-3 options
 - Evaluate trade-offs
 - Make recommendation
 
 **Level 3:** Deep dive
+
 - Prototype if needed
 - Research edge cases
 - Document unknowns
@@ -73,51 +96,61 @@ Create `.gsd/phases/{N}/RESEARCH.md`:
 
 ```markdown
 ---
-phase: {N}
-level: {1|2|3}
-researched_at: {date}
+phase: { N }
+level: { 1|2|3 }
+researched_at: { date }
 ---
 
 # Phase {N} Research
 
 ## Questions Investigated
+
 1. {question}
 2. {question}
 
 ## Findings
 
 ### {Topic 1}
+
 {What was learned}
 
 **Sources:**
+
 - {URL}
 
 **Recommendation:** {what to do}
 
 ### {Topic 2}
+
 ...
 
 ## Decisions Made
-| Decision | Choice | Rationale |
-|----------|--------|-----------|
-| {decision} | {choice} | {why} |
+
+| Decision   | Choice   | Rationale |
+| ---------- | -------- | --------- |
+| {decision} | {choice} | {why}     |
 
 ## Patterns to Follow
+
 - {pattern 1}
 - {pattern 2}
 
 ## Anti-Patterns to Avoid
+
 - {anti-pattern}: {why}
 
 ## Dependencies Identified
+
 | Package | Version | Purpose |
-|---------|---------|---------|
-| {pkg} | {ver} | {why} |
+| ------- | ------- | ------- |
+| {pkg}   | {ver}   | {why}   |
 
 ## Risks
+
 - {risk}: {mitigation}
 
 ## Ready for Planning
+
 - [x] Questions answered
 - [x] Approach selected
 - [x] Dependencies identified

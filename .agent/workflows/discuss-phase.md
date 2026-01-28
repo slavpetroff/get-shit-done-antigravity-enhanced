@@ -22,15 +22,35 @@ Run BEFORE `/plan` when:
 ## 1. Load Phase Context
 
 Read from ROADMAP.md:
+
 - Phase objective
 - Dependencies
 - Current status
 
 ---
 
-## 2. Analyze Requirements
+## 2. Context Retrieval (RAG)
+
+**PowerShell:**
+
+```powershell
+python3 scripts/gsd_select.py "Phase $PHASE discussion"
+```
+
+**Bash:**
+
+```bash
+python3 scripts/gsd_select.py "Phase $PHASE discussion"
+```
+
+_Copy the output into your context to ensure you use the right skills._
+
+---
+
+## 3. Analyze Requirements
 
 From phase objective, extract:
+
 - What needs to be built
 - What constraints exist
 - What decisions need to be made
@@ -76,6 +96,7 @@ TOPICS TO DISCUSS
 ## 4. Gather User Input
 
 Listen for:
+
 - Scope decisions
 - Approach preferences
 - Constraints not in spec
@@ -93,13 +114,16 @@ Update `.gsd/DECISIONS.md`:
 **Date:** {date}
 
 ### Scope
+
 - {decision about scope}
 
 ### Approach
+
 - Chose: {approach}
 - Reason: {rationale}
 
 ### Constraints
+
 - {constraint identified}
 ```
 

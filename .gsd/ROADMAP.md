@@ -34,6 +34,6 @@
 
 ### Phase 6: Refine Implementation (Context RAG)
 
-**Status**: ⬜ Not Started
+**Status**: ✅ Complete
 **Objective**: Automate skill discovery and selection to ensure relevant skills are injected into prompts autonomously (RAG-style) without manual user commands.
 **Depends on**: Phase 5
