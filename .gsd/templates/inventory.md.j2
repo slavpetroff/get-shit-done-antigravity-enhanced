@@ -1,0 +1,21 @@
+# GSD Inventory: {{ type }}
+
+> **Last Updated**: {{ last_sync }}
+> **Total Items**: {{ count }}
+
+---
+
+{% for item in items %}
+## {{ item.name }}
+- **ID**: `{{ item.id }}`
+- **Source**: `{{ item.path }}`
+- **Confidence**: `{{ item.confidence }}`
+
+### Description
+{{ item.description }}
+
+### Usage Details
+{{ item.details }}
+
+---
+{% endfor %}

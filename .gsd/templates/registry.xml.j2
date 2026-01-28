@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gsd_inventory version="1.1.0">
+    <metadata>
+        <last_sync>{{ last_sync }}</last_sync>
+        <os>{{ os_info }}</os>
+    </metadata>
+    <skills>
+        {% for skill in skills %}
+        <skill id="{{ skill.id }}" confidence="{{ skill.confidence }}">
+            <name>{{ skill.name }}</name>
+            <path>{{ skill.path }}</path>
+            <description>{{ skill.description }}</description>
+            <capabilities>
+                {% for cap in skill.capabilities %}
+                <capability>{{ cap }}</capability>
+                {% endfor %}
+            </capabilities>
+        </skill>
+        {% endfor %}
+    </skills>
+    <mcp_servers>
+        {% for mcp in mcp_servers %}
+        <mcp_server id="{{ mcp.id }}" source="{{ mcp.source }}">
+            <name>{{ mcp.name }}</name>
+            <path>{{ mcp.path }}</path>
+            <config_file>{{ mcp.config_file }}</config_file>
+        </mcp_server>
+        {% endfor %}
+    </mcp_servers>
+</gsd_inventory>
