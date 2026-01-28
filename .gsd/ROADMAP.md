@@ -67,3 +67,13 @@
 - [ ] Define Validation Rules Schema
 - [ ] Implement `gsd_validate.py`
 - [ ] Integrate with `/verify` workflow
+
+## Phase 10: Context-Aware Workflows
+
+**Status**: ✅ Complete
+**Objective**: Enhance `/plan` and `/execute` to dynamically pull form Library Intelligence based on project content.
+**Tasks**:
+
+- [ ] Update `gsd_select.py` to ingest Library Intelligence
+- [ ] Update `/plan` workflow
+- [ ] Update `/map` workflow

@@ -248,6 +248,16 @@ python3 scripts/gsd_select.py "Phase $PHASE planning"
 
 _Copy the output into your context to ensure you use the right skills._
 
+### 6a. Read Library Intelligence
+
+**All shells:**
+
+```bash
+python3 scripts/read_library_context.py
+```
+
+_Injected library patterns into context._
+
 ---
 
 ## 7. Create Plans
