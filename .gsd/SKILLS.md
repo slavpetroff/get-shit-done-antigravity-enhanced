@@ -36,12 +36,12 @@ The agent should self-monitor for these warning signs:
 
 ### Warning Signs
 
-| Signal | Threshold | Action |
-|--------|-----------|--------|
-| Repeated debugging | 3+ failed attempts | Trigger state dump |
-| Going in circles | Same approach tried twice | Stop and reassess |
+| Signal               | Threshold                    | Action               |
+| -------------------- | ---------------------------- | -------------------- |
+| Repeated debugging   | 3+ failed attempts           | Trigger state dump   |
+| Going in circles     | Same approach tried twice    | Stop and reassess    |
 | Confusion indicators | "I'm not sure", backtracking | Document uncertainty |
-| Session length | Extended back-and-forth | Recommend `/pause` |
+| Session length       | Extended back-and-forth      | Recommend `/pause`   |
 
 ### Behavior & Constraints
 ### Rule 1: The 3-Strike Rule

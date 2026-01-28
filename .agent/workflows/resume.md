@@ -16,7 +16,19 @@ Read `.gsd/STATE.md` completely.
 
 ---
 
-## 2. Display Context
+## 2. Sync Registries (Background)
+
+Update local skill and global MCP registries to ensure session context is current:
+
+**Bash/Zsh:**
+
+```bash
+python3 scripts/gsd_sync.py
+```
+
+---
+
+## 3. Display Context
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -57,6 +69,7 @@ NEXT STEPS (from last session)
 ## 3. Load Recent Journal
 
 Show last entry from `.gsd/JOURNAL.md`:
+
 - What was accomplished
 - Handoff notes
 - Any issues encountered
@@ -71,6 +84,7 @@ git status --porcelain
 ```
 
 **If changes found:**
+
 ```
 ⚠️ UNCOMMITTED CHANGES DETECTED
 
@@ -85,6 +99,7 @@ Review before proceeding.
 ## 5. Update State
 
 Mark session as active in `.gsd/STATE.md`:
+
 ```markdown
 **Status**: Active (resumed {timestamp})
 ```
