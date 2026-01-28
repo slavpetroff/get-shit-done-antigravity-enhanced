@@ -36,6 +36,21 @@
 **Objective**: Refactor SKILLS.md to use a categorized index pointing to individual skill files to reduce file size and improve retrieval.
 **Depends on**: Phase 6
 
+# Milestone: v2.0 — Semantic Intelligence & Architecture
+
+> **Goal**: Transform GSD from a workflow runner into an **Architectural Partner** by integrating library-specific knowledge graphs and enforcing patterns.
+
+## Phase 8: Library Intelligence Registry
+
+**Status**: ✅ Complete
+**Objective**: Dedicated registry for Framework/Library knowledge, dynamically populated.
+**Tasks**:
+
+- [ ] Design Schema & Structure
+- [ ] Build `scan_dependencies.py`
+- [ ] Build `fetch_library_intel.py`
+- [ ] Create `/sync-libs` workflow
+
 **Tasks**:
 
 - [ ] Create `scripts/categorize_skills.py`
