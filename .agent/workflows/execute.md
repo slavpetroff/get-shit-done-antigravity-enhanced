@@ -177,14 +177,31 @@ For each plan in the current wave:
 1. **Load plan context** — Read only the PLAN.md file
 2. **Context Retrieval (RAG)** — Run `python3 scripts/gsd_select.py "{plan-objective}"`
 3. **Library Intelligence** — Run `python3 scripts/read_library_context.py`
-4. **Execute tasks** — Follow `<task>` blocks in order
-5. **Verify each task** — Run `<verify>` commands
-6. **Commit per task:**
+4. **Determine Task Persona**
+
+   **Bash:**
+
+   ```bash
+   TASK_TYPE=$(echo "$TASK_BLOCK" | python3 scripts/gsd_extract_task_type.py)
+   if [ "$TASK_TYPE" == "research" ]; then
+       cat .agent/personas/researcher.md
+   elif [ "$TASK_TYPE" == "verify" ]; then
+       cat .agent/personas/reviewer.md
+   else
+       cat .agent/personas/implementer.md
+   fi
+   ```
+
+   _Injected persona instructions into context._
+
+5. **Execute tasks** — Follow `<task>` blocks in order
+6. **Verify each task** — Run `<verify>` commands
+7. **Commit per task:**
    ```bash
    git add -A
    git commit -m "feat(phase-{N}): {task-name}"
    ```
-7. **Create SUMMARY.md** — Document what was done
+8. **Create SUMMARY.md** — Document what was done
 
 ### 6b. Verify Wave Complete
 
