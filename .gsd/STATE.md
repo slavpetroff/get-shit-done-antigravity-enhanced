@@ -1,17 +1,17 @@
 # STATE.md
 
-> **Status**: `PLANNED`
-> **Milestone**: v1.2.0
-> **Phase**: 3 — Validation Protocol & Stress Testing
+> **Status**: `DONE`
+> **Milestone**: v1.2.0 (Context Observability) — COMPLETE
+> **Phase**: All Phases Complete
 
 ## Current Position
 
-- **Phase**: 3 Planned.
-- **Tasks**:
-  1. `test_context_integrity.py` (No truncation assurance).
-  2. `test_ranking_simulation.py` (Deterministic scoring).
-  3. `stress_context.py` (100 concurrent users).
+- **Milestone v1.2.0**: Successfully implemented Context Logging, Inspection Tools, and Validation Suite.
+- **Key Assets**:
+  - `scripts/gsd_select.py`: Now has integrated `fcntl` logging.
+  - `scripts/gsd_verify_context.py`: Tool to inspect logs.
+  - `tests/`: Comprehensive regression suite (`integrity`, `ranking`, `stress`).
 
 ## Next Steps
 
-1. `/execute 3` — Execute the validation suite.
+1. `/new-milestone` — Plan next major feature.
