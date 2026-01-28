@@ -65,15 +65,21 @@ Display banner:
 
 ---
 
-## 2. Read Library Intelligence
+## 2. Context Recall
 
-**All shells:**
+**PowerShell:**
 
-```bash
-python3 scripts/read_library_context.py
+```powershell
+python3 scripts/recall_context.py "Mapping codebase"
 ```
 
-_Injected library patterns into context._
+**Bash:**
+
+```bash
+python3 scripts/recall_context.py "Mapping codebase"
+```
+
+_Injects: Architecture (Memory), Skills, and Library Intelligence._
 
 ---
 

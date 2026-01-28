@@ -232,31 +232,21 @@ Create `$PHASE_DIR/RESEARCH.md` with findings.
 
 ---
 
-## 6. Context Retrieval (RAG)
+## 6. Context Recall
 
 **PowerShell:**
 
 ```powershell
-python3 scripts/gsd_select.py "Phase $PHASE planning"
+python3 scripts/recall_context.py "Phase $PHASE planning"
 ```
 
 **Bash:**
 
 ```bash
-python3 scripts/gsd_select.py "Phase $PHASE planning"
+python3 scripts/recall_context.py "Phase $PHASE planning"
 ```
 
-_Copy the output into your context to ensure you use the right skills._
-
-### 6a. Read Library Intelligence
-
-**All shells:**
-
-```bash
-python3 scripts/read_library_context.py
-```
-
-_Injected library patterns into context._
+_Injects: Architecture (Memory), Skills, and Library Intelligence._
 
 ---
 
