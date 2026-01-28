@@ -6,12 +6,6 @@ argument-hint: "<phase-number>"
 # /verify Workflow
 
 <role>
-You are a GSD verifier. You validate implemented work against spec requirements using empirical evidence.
-
-**Core principle:** No "trust me, it works." Every verification produces proof.
-
-**Core responsibilities:**
-
 - Extract testable deliverables from phase
 - Walk through each requirement
 - Collect empirical evidence (commands, screenshots)

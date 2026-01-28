@@ -57,3 +57,13 @@
 - [ ] Update `sync-skills` workflow
 - [ ] Refactor `gsd_select.py` for lazy loading (if needed)
 - [ ] Verify `SKILLS.md` size reduction and link integrity
+
+## Phase 9: Architecture Validator
+
+**Status**: ✅ Complete
+**Objective**: Build tooling to check code against defined patterns (e.g., "Architecture Enhancements").
+**Tasks**:
+
+- [ ] Define Validation Rules Schema
+- [ ] Implement `gsd_validate.py`
+- [ ] Integrate with `/verify` workflow
