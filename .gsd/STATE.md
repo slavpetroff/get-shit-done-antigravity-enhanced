@@ -1,17 +1,14 @@
 # STATE.md
 
-> **Status**: `DONE`
-> **Milestone**: v1.2.0 (Context Observability) — COMPLETE
-> **Phase**: All Phases Complete
+> **Status**: `IN_PROGRESS`
+> **Milestone**: v1.3.0 (Skills Optimization) — STARTED
+> **Phase**: Phase 7: Skills Registry Optimization
 
 ## Current Position
 
-- **Milestone v1.2.0**: Successfully implemented Context Logging, Inspection Tools, and Validation Suite.
-- **Key Assets**:
-  - `scripts/gsd_select.py`: Now has integrated `fcntl` logging.
-  - `scripts/gsd_verify_context.py`: Tool to inspect logs.
-  - `tests/`: Comprehensive regression suite (`integrity`, `ranking`, `stress`).
+- **Phase 7**: Refactoring `SKILLS.md` to reduce size and improve indexing.
+- **Goal**: Create a categorized index that points to skill files instead of embedding content.
 
 ## Next Steps
 
-1. `/new-milestone` — Plan next major feature.
+1. `/plan 7` — Create detailed execution plan for Phase 7.
