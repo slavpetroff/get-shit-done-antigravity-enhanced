@@ -7,13 +7,16 @@ This registry contains discovered MCP server configurations from global IDE sett
 
 ---
 
-## [INVENTORY PENDING]
-
-_Run `/sync-skills` to populate this inventory._
+## Technical Details
+This file is both a human-readable inventory and a machine-readable registry. GSD uses the `<gsd_registry>` block below for automated tool selection and prompt injection.
 
 ---
 
-<gsd_registry type="mcp_servers">
-<!-- MACHINE-READABLE REGISTRY -->
-<!-- PENDING SYNC -->
+## [NO ITEMS DISCOVERED]
+_Run discovery again or check configuration paths._
+
+
+<gsd_registry>
+    <!-- MACHINE-READABLE REGISTRY -->
+
 </gsd_registry>
