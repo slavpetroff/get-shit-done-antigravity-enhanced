@@ -224,6 +224,35 @@ This file is both a human-readable inventory and a machine-readable registry. GS
         f.write(new_content)
     print(f"Updated {path} with {len(items)} items.")
 
+def hydrate_personas(skills):
+    """Injects discovered skills into persona files."""
+    PERSONAS_DIR = ".agent/personas"
+    if not os.path.exists(PERSONAS_DIR):
+        return
+
+    # Prepare skill summary for hydration
+    skill_summary = "\n".join([f"- **{s['name']}**: {s['description']}" for s in skills if s['confidence'] >= 0.5])
+    if not skill_summary:
+        skill_summary = "_No specialized skills discovered._"
+
+    for persona_file in os.listdir(PERSONAS_DIR):
+        if not persona_file.endswith(".md"): continue
+        path = os.path.join(PERSONAS_DIR, persona_file)
+        
+        with open(path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        if "<!-- SKILLS_START -->" in content and "<!-- SKILLS_END -->" in content:
+            new_content = re.sub(
+                r"<!-- SKILLS_START -->.*?<!-- SKILLS_END -->",
+                f"<!-- SKILLS_START -->\n{skill_summary}\n<!-- SKILLS_END -->",
+                content,
+                flags=re.DOTALL
+            )
+            with open(path, 'w', encoding='utf-8') as f:
+                f.write(new_content)
+            print(f"Hydrated persona: {persona_file}")
+
 def main():
     print(f"GSD Discovery Engine v1.1.0 | {datetime.datetime.now().isoformat()}")
     print("-" * 50)
@@ -233,6 +262,10 @@ def main():
     
     update_inventory(SKILLS_INVENTORY, "skills", skills)
     update_inventory(MCPS_INVENTORY, "mcp_servers", mcps)
+    
+    # Hydration Wave
+    print("Initiating Hydration Wave...")
+    hydrate_personas(skills)
     
     print("-" * 50)
     print("Sync complete.")

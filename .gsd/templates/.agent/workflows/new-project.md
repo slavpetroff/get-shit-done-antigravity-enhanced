@@ -326,6 +326,8 @@ Create with templates:
 - `.gsd/DECISIONS.md` — Empty ADR log
 - `.gsd/JOURNAL.md` — Empty journal
 - `.gsd/TODO.md` — Empty todo list
+- `.gsd/SKILLS.md` — Local registry
+- `.gsd/MCPS.md` — Global tools registry
 
 Create directories:
 
@@ -348,15 +350,17 @@ cp -r .gsd/templates/.agent/* .agent/
 
 ---
 
-## Phase 10: Skill Discovery
+## Phase 10: Skill Discovery & Hydration
 
-Run the initial discovery scan to populate your registries:
+Run the initial discovery scan to populate your registries and hydrate personas:
 
 **Bash/Zsh:**
 
 ```bash
 python3 scripts/gsd_sync.py
 ```
+
+_This populates SKILLS.md, MCPS.md and injects discovered intelligence into `.agent/personas/`._
 
 ---
 
