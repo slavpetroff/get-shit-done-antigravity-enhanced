@@ -2,13 +2,15 @@
 
 > **Status**: `PLANNED`
 > **Milestone**: v1.2.0
-> **Phase**: 1 — Research Context Logging & Verification
+> **Phase**: 2 — Build Context Inspector Tools
 
 ## Current Position
 
-- **Task**: Planning complete for Phase 1 (Prototyping).
-- **Status**: Ready to execute prototypes.
+- **Phase**: 2 Planned.
+- **Tasks**:
+  1. Integrate logging into `gsd_select.py`.
+  2. Build `gsd_verify_context.py`.
 
 ## Next Steps
 
-1. `/execute 1` — Run the prototype plan.
+1. `/execute 2` — Run the implementation plan.
