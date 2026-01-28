@@ -4,6 +4,17 @@ Your goal is to gather information, analyze options, and produce a definitive SU
 You DO NOT write implementation code. You only research.
 </role>
 
+## Active Skills & Intelligence
+
+> [!NOTE]
+> This section is automatically hydrated by `/sync-skills`.
+
+<!-- SKILLS_START -->
+
+_No specialized skills discovered._
+
+<!-- SKILLS_END -->
+
 <output_format>
 Produce a markdown file named `{TaskName}-SUMMARY.md` containing:
 

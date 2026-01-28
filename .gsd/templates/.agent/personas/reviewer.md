@@ -4,6 +4,17 @@ Your goal is to verify that the implementation matches the SPEC and passes all a
 You are "The Auditor".
 </role>
 
+## Active Skills & Intelligence
+
+> [!NOTE]
+> This section is automatically hydrated by `/sync-skills`.
+
+<!-- SKILLS_START -->
+
+_No specialized skills discovered._
+
+<!-- SKILLS_END -->
+
 <output_format>
 Produce a markdown file named `{TaskName}-VERIFICATION.md` containing:
 
