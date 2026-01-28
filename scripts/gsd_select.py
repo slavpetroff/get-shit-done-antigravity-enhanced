@@ -4,6 +4,9 @@ import re
 import json
 import sys
 import xml.etree.ElementTree as ET
+import fcntl
+import time
+
 
 # --- Configuration ---
 SKILLS_INVENTORY = ".gsd/SKILLS.md"
@@ -96,6 +99,48 @@ def score_item(item, context):
         
     return score
 
+def log_context_selection(context, selected_items, prompt_fragment):
+    """
+    Safely logs the context selection event to a JSONL file using fcntl locking.
+    """
+    log_file = ".gsd/logs/audit.jsonl"
+    
+    # Ensure directory exists
+    log_dir = os.path.dirname(log_file)
+    if log_dir and not os.path.exists(log_dir):
+        os.makedirs(log_dir, exist_ok=True)
+        
+    event = {
+        "timestamp": time.time(),
+        "pid": os.getpid(),
+        "context": context,
+        "selected_ids": [item['id'] for score, item in selected_items],
+        "fragment_length": len(prompt_fragment) if prompt_fragment else 0,
+        # Log the first 100 chars for quick debugging, but full content is available if needed
+        # We store full fragment for fidelity checks vs source
+        "full_fragment": prompt_fragment
+    }
+    
+    try:
+        with open(log_file, 'a', encoding='utf-8') as f:
+            # Acquire exclusive lock
+            fcntl.flock(f, fcntl.LOCK_EX)
+            
+            # Write JSON line
+            f.write(json.dumps(event) + "\n")
+            
+            # Flush to disk
+            f.flush()
+            os.fsync(f.fileno())
+            
+            # Release lock
+            fcntl.flock(f, fcntl.LOCK_UN)
+    except Exception as e:
+        # Fail silent on logging errors to not break the tool
+        # In a production system we might print to stderr
+        pass
+
+
 def main():
     if len(sys.argv) < 2:
         print(json.dumps({"error": "No context provided", "usage": "gsd_select.py <context>"}, indent=2))
@@ -143,6 +188,13 @@ def main():
         "results": results,
         "prompt_injection": "\n\n".join(prompt_fragment) if prompt_fragment else "No relevant skills found."
     }
+
+    # 5. Log Execution
+    log_context_selection(
+        context, 
+        [(score, item) for score, item in top_items], 
+        output["prompt_injection"]
+    )
     
     print(json.dumps(output, indent=2))
 
