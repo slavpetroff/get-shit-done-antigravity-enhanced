@@ -1,39 +1,31 @@
-# ROADMAP.md
+# Milestone: v1.2.0 — Context Observability & Validation
 
-> **Current Phase**: Phase 1: Foundation
-> **Milestone**: v1.1.0 — Intelligent Skills Discovery
+> **Goal**: Create measuring and validation tools to ensure GSD's automated context injection works correctly without truncation or formatting issues.
 
-## Must-Haves (from SPEC)
+## Must-Haves
 
-- [ ] Automated discovery script (`gsd_sync.py`)
-- [ ] Selection logic script (`gsd_select.py`)
-- [ ] `/sync-skills` workflow
-- [ ] Integration with `/new-project`
+- [ ] Research report on prompt inspection methods
+- [ ] `gsd_inspect.py` (or similar) to simulate workflow prompts
+- [ ] Validation suite for skill injection integrity
 
 ## Phases
 
-### Phase 2: Discovery Engine Implementation
+### Phase 1: Research Prompt Interception & Simulation
 
-**Status**: ✅ Complete
-**Objective**: Implement `gsd_sync.py` to scan local and global paths.
+**Status**: ⬜ Not Started
+**Objective**: Investigate methods to capture or simulate the exact context (system prompt + user prompt + injected skills) sent to the LLM.
 
-### Phase 3: Selection Logic (The Reasoner)
+### Phase 2: Build Context Inspector Tools
 
-**Status**: ✅ Complete
-**Objective**: Implement `gsd_select.py` using keyword/context matching.
+**Status**: ⬜ Not Started
+**Objective**: Create tooling to generate "dry run" prompts and analyze their token count and formatting.
 
-### Phase 4: Workflow Integration
+### Phase 3: Validation Protocol & Stress Testing
 
-**Status**: ✅ Complete
-**Objective**: Add `/sync-skills` and update initialization workflows.
+**Status**: ⬜ Not Started
+**Objective**: Assert that skills are not truncated and are correctly prioritized in various context sizes.
 
-### Phase 5: Verification & Polish
+### Phase 4: Workflow Integration & Polish
 
-**Status**: ✅ Complete
-**Objective**: Comprehensive testing across platforms and documentation cleanup.
-
-### Phase 6: Refine Implementation (Context RAG)
-
-**Status**: ✅ Complete
-**Objective**: Automate skill discovery and selection to ensure relevant skills are injected into prompts autonomously (RAG-style) without manual user commands.
-**Depends on**: Phase 5
+**Status**: ⬜ Not Started
+**Objective**: Integrate inspection tools into the workflow (e.g., `--dry-run`) and document findings.
