@@ -1,21 +1,22 @@
 # GSD Inventory: {{ type }}
 
-> **Last Updated**: {{ last_sync }}
-> **Total Items**: {{ count }}
+> **Status**: `ACTIVE`
+> **Last Sync**: {{ last_sync }}
+> **Total**: {{ count }}
 
 ---
 
-{% for item in items %}
-## {{ item.name }}
-- **ID**: `{{ item.id }}`
-- **Source**: `{{ item.path }}`
-- **Confidence**: `{{ item.confidence }}`
-
-### Description
-{{ item.description }}
-
-### Usage Details
-{{ item.details }}
+{{ human_readable_content }}
 
 ---
-{% endfor %}
+
+<gsd_registry type="{{ type }}">
+    <!-- MACHINE-READABLE REGISTRY -->
+    {% for item in items %}
+    <item id="{{ item.id }}" confidence="{{ item.confidence }}">
+        <name>{{ item.name }}</name>
+        <path>{{ item.path }}</path>
+        <description>{{ item.description }}</description>
+    </item>
+    {% endfor %}
+</gsd_registry>

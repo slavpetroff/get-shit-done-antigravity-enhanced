@@ -10,3 +10,10 @@ This registry contains specialized skills discovered in `.agent/skills/`. Each s
 ## [INVENTORY PENDING]
 
 _Run `/sync-skills` to populate this inventory._
+
+---
+
+<gsd_registry type="skills">
+<!-- MACHINE-READABLE REGISTRY -->
+<!-- PENDING SYNC -->
+</gsd_registry>
