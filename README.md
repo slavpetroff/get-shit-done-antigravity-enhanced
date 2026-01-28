@@ -305,6 +305,32 @@ GSD-STYLE.md          # Complete style guide
 
 ---
 
+## 🧠 Skill Management (New in v3.0)
+
+GSD v3.0 introduces a **clean core**: only essential skills (Plan, Execute, Verify) are installed by default.
+
+### Discover & Sync Skills
+
+To populate your agent with specialized skills (e.g., React, Python, AWS) or personal skills:
+
+```bash
+python3 scripts/gsd_sync.py
+```
+
+This scans your configured MCP paths and skill directories, generating a registry for the planner to use.
+
+### Kaizen Loop (Self-Optimization)
+
+Verification failures now trigger a **Kaizen Loop**:
+
+1. Diagnosis of failure
+2. Proposal for skill/workflow fix
+3. Review & Apply
+
+This allows the agent to repair its own instructions over time.
+
+---
+
 ## 🧪 Testing
 
 Run validation scripts to verify GSD structure:
