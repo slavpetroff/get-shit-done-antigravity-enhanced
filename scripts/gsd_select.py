@@ -46,8 +46,22 @@ def extract_registry(path):
         print(f"Error parsing registry in {path}: {e}")
         return []
 
-def get_full_extraction(item_id, inventory_path):
-    """Extracts the full human-readable section for a specific item from the MD file."""
+def get_full_extraction(item_id, inventory_path, item_path=None):
+    """
+    Extracts the full skill content.
+    If item_path is provided (from registry), reads that file directly.
+    Otherwise, falls back to parsing the inventory file (legacy behavior).
+    """
+    # Optimized Path: Read directly from source file
+    if item_path and os.path.exists(item_path):
+        try:
+            with open(item_path, 'r', encoding='utf-8') as f:
+                return f.read()
+        except Exception as e:
+            print(f"Error reading skill file {item_path}: {e}")
+            return ""
+
+    # Legacy Path: extract from inventory (SKILLS.md split by ---)
     if not os.path.exists(inventory_path):
         return ""
         
@@ -90,8 +104,9 @@ def score_item(item, context):
     if item['id'].lower() in context:
         score += W_ID
         
-    # Heuristic: if context contains "debug" and id contains "debug"
-    if "debug" in context and "debug" in item['id'].lower():
+    # Heuristic: if context contains "debug", "bug", or "fix" and id contains relevant terms
+    if any(k in context for k in ["debug", "bug", "fix"]) and \
+       any(k in item['id'].lower() for k in ["debug", "fix"]):
         score += 5
 
     if "map" in context and "mapper" in item['id'].lower():
@@ -115,7 +130,7 @@ def log_context_selection(context, selected_items, prompt_fragment):
         "pid": os.getpid(),
         "context": context,
         "selected_ids": [item['id'] for score, item in selected_items],
-        "fragment_length": len(prompt_fragment) if prompt_fragment else 0,
+        "fragment_length": len("\n\n".join(prompt_fragment)) if prompt_fragment else 0,
         # Log the first 100 chars for quick debugging, but full content is available if needed
         # We store full fragment for fidelity checks vs source
         "full_fragment": prompt_fragment
@@ -172,7 +187,7 @@ def main():
     for score, item in top_items:
         # Get full extraction for prompt injection
         inventory_path = SKILLS_INVENTORY if item in skills else MCPS_INVENTORY
-        full_text = get_full_extraction(item['id'], inventory_path)
+        full_text = get_full_extraction(item['id'], inventory_path, item.get('path'))
         
         results.append({
             "id": item['id'],
@@ -193,7 +208,7 @@ def main():
     log_context_selection(
         context, 
         [(score, item) for score, item in top_items], 
-        output["prompt_injection"]
+        prompt_fragment
     )
     
     print(json.dumps(output, indent=2))

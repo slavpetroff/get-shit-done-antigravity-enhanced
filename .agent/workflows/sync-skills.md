@@ -18,7 +18,8 @@ Execute the synchronization script:
 **Bash/Zsh:**
 
 ```bash
-python3 scripts/gsd_sync.py
+python3 scripts/gsd_sync.py --output json
+python3 scripts/categorize_skills.py
 ```
 
 ## 2. Verify Output
