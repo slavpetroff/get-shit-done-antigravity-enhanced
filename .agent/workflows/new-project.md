@@ -334,7 +334,21 @@ Create directories:
 
 ---
 
-## Phase 9: Skill Discovery
+## Phase 9: Scaffold Scripts & Agent
+
+Copy templates to project root:
+
+**Bash/Zsh:**
+
+```bash
+mkdir -p .agent/skills .agent/libraries .agent/workflows scripts
+cp -r .gsd/templates/scripts/* scripts/
+cp -r .gsd/templates/.agent/* .agent/
+```
+
+---
+
+## Phase 10: Skill Discovery
 
 Run the initial discovery scan to populate your registries:
 
@@ -346,10 +360,10 @@ python3 scripts/gsd_sync.py
 
 ---
 
-## Phase 10: Initial Commit
+## Phase 11: Initial Commit
 
 ```bash
-git add .gsd/
+git add .gsd/ .agent/ scripts/
 git commit -m "chore: initialize GSD project
 
 - SPEC.md with vision and goals
@@ -359,7 +373,7 @@ git commit -m "chore: initialize GSD project
 
 ---
 
-## Phase 10: Done
+## Phase 12: Done
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

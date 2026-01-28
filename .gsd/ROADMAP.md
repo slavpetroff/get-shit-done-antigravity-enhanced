@@ -77,3 +77,13 @@
 - [ ] Update `gsd_select.py` to ingest Library Intelligence
 - [ ] Update `/plan` workflow
 - [ ] Update `/map` workflow
+
+## Phase 11: Dogfooding & Template Synchronization
+
+**Status**: ✅ Complete
+**Objective**: Update project templates and self-apply strict architectural validation to the GSD codebase itself.
+**Tasks**:
+
+- [x] Update `.gsd/templates/` with new scripts/constants
+- [x] Create `setup.sh` or update installation instructions
+- [x] Run `/verify` on GSD repo (self-check)

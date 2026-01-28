@@ -2,14 +2,15 @@
 
 > **Status**: `DONE`
 >
-> - **Phase**: Phase 8: Library Intelligence Registry (Verified)
+> - **Phase**: Phase 11: Dogfooding & Templates (Verified)
 
 - **Task**: Execution Complete
-- **Status**: ✅ Phase 8 Verified
+- **Status**: ✅ Phase 11 Verified
 
 ## Last Session Summary
 
-Executed Phase 8 (Library Intelligence). Created `.agent/libraries` registry, dependency scanner, and intelligence fetcher. Verified with test usage.
+Executed Phase 11 (Dogfooding & Templates). Updated `.gsd/templates/` with v2.0 enablement scripts and modified `/new-project` workflow to propagate them. Verified validator runs on GSD repo.
+ligence fetcher. Verified with test usage.
 ghtweight, clickable in VS Code, and `gsd_select.py` loads content on demand.
 
 ## Next Steps
