@@ -22,7 +22,8 @@ PATHS = {
         os.path.expanduser("~/.cursor/mcp-servers.json") # Alternate/future
     ],
     "gemini": [
-        os.path.expanduser("~/.gemini/config.json") # Custom projection
+        os.path.expanduser("~/.gemini/config.json"), # Custom projection
+        os.path.expanduser("~/.gemini/antigravity/mcp_config.json") # Antigravity session config
     ]
 }
 
