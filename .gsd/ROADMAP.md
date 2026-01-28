@@ -10,7 +10,7 @@
 
 ## Phases
 
-### Phase 1: Research Prompt Interception & Simulation
+### Phase 1: Research Context Logging & Verification
 
 **Status**: ⬜ Not Started
 **Objective**: Investigate methods to capture or simulate the exact context (system prompt + user prompt + injected skills) sent to the LLM.
