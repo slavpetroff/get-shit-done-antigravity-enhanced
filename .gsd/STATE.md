@@ -1,15 +1,17 @@
 # STATE.md
 
-> **Status**: `DONE`
+> **Status**: `PLANNED`
 > **Milestone**: v1.2.0
-> **Phase**: 2 — Build Context Inspector Tools
+> **Phase**: 3 — Validation Protocol & Stress Testing
 
 ## Current Position
 
-- **Phase**: 2 completed.
-- **Tools**: `gsd_verify_context.py` available for validation.
-- **Logging**: `gsd_select.py` is now observable.
+- **Phase**: 3 Planned.
+- **Tasks**:
+  1. `test_context_integrity.py` (No truncation assurance).
+  2. `test_ranking_simulation.py` (Deterministic scoring).
+  3. `stress_context.py` (100 concurrent users).
 
 ## Next Steps
 
-1. `/plan 3` — Plan Validation Protocol & Stress Testing.
+1. `/execute 3` — Execute the validation suite.
