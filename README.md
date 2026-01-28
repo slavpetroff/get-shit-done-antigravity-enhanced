@@ -314,14 +314,14 @@ GSD v3.0 introduces a **clean core**: only essential skills (Plan, Execute, Veri
 To populate your agent with specialized skills (e.g., React, Python, AWS) or personal skills:
 
 ```bash
-python3 scripts/gsd_sync.py
+/sync-skills
 ```
 
 This scans your configured MCP paths and skill directories, generating a registry for the planner to use.
 
 ### Kaizen Loop (Self-Optimization)
 
-Verification failures now trigger a **Kaizen Loop**:
+Verification failures (during `/execute`) automatically trigger a **Kaizen Loop**:
 
 1. Diagnosis of failure
 2. Proposal for skill/workflow fix
