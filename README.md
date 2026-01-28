@@ -31,6 +31,7 @@ People who want to describe what they want and have it built correctly — witho
 ## 🚀 Getting Started
 
 **PowerShell (Windows):**
+
 ```powershell
 # Open your project
 cd your-project
@@ -48,6 +49,7 @@ Remove-Item -Recurse -Force gsd-template
 ```
 
 **Bash (Linux/Mac):**
+
 ```bash
 # open your project
 cd your-project
@@ -59,6 +61,7 @@ git clone https://github.com/toonight/get-shit-done-for-antigravity.git gsd-temp
 cp -r gsd-template/.agent ./
 cp -r gsd-template/.gemini ./
 cp -r gsd-template/.gsd ./
+cp -r gsd-template/scripts ./
 
 # Clean up
 rm -rf gsd-template
@@ -71,27 +74,32 @@ Then run `/new-project` and follow the prompts.
 ## How It Works
 
 ### 1. Initialize → Question → Spec
+
 ```
 /new-project → Deep questioning → SPEC.md (finalized)
 ```
 
 ### 2. Discuss (Optional) → Context
+
 ```
 /discuss-phase 1 → Clarify scope → DECISIONS.md
 ```
 
 ### 3. Plan → Research → Tasks
+
 ```
 /plan 1 → Discovery → PLAN.md with XML tasks
 ```
 
 ### 4. Execute → Verify → Commit
+
 ```
 /execute 1 → Wave execution → Atomic commits
 /verify 1 → Must-haves check → Evidence captured
 ```
 
 ### 5. Repeat
+
 ```
 /discuss-phase 2 → /plan 2 → /execute 2 → ...
 /complete-milestone → Next milestone
@@ -103,18 +111,18 @@ Then run `/new-project` and follow the prompts.
 
 ### Context Engineering
 
-The AI is incredibly powerful *if* you give it the context it needs. Most people don't.
+The AI is incredibly powerful _if_ you give it the context it needs. Most people don't.
 
 GSD handles it for you:
 
-| File | What it does |
-|------|--------------|
-| `SPEC.md` | Project vision, always loaded |
-| `ARCHITECTURE.md` | System understanding |
-| `ROADMAP.md` | Where you're going, what's done |
-| `STATE.md` | Decisions, blockers, position — memory across sessions |
-| `PLAN.md` | Atomic tasks with XML structure, verification steps |
-| `SUMMARY.md` | What happened, what changed |
+| File              | What it does                                           |
+| ----------------- | ------------------------------------------------------ |
+| `SPEC.md`         | Project vision, always loaded                          |
+| `ARCHITECTURE.md` | System understanding                                   |
+| `ROADMAP.md`      | Where you're going, what's done                        |
+| `STATE.md`        | Decisions, blockers, position — memory across sessions |
+| `PLAN.md`         | Atomic tasks with XML structure, verification steps    |
+| `SUMMARY.md`      | What happened, what changed                            |
 
 Size limits based on where AI quality degrades. Stay under, get consistent excellence.
 
@@ -142,11 +150,11 @@ Precise instructions. No guessing. Verification built in.
 
 Plans are grouped into waves based on dependencies:
 
-| Wave | Plans | Parallelization |
-|------|-------|-----------------|
-| 1 | Foundation tasks | Run together |
-| 2 | Depends on Wave 1 | Wait, then run together |
-| 3 | Depends on Wave 2 | Wait, then run together |
+| Wave | Plans             | Parallelization         |
+| ---- | ----------------- | ----------------------- |
+| 1    | Foundation tasks  | Run together            |
+| 2    | Depends on Wave 1 | Wait, then run together |
+| 3    | Depends on Wave 2 | Wait, then run together |
 
 Each executor gets fresh context. Your main session stays fast.
 
@@ -160,7 +168,8 @@ def456g feat(phase-1): add password validation
 hij789k feat(phase-1): implement JWT cookie handling
 ```
 
-**Benefits:** 
+**Benefits:**
+
 - Git bisect finds exact failing task
 - Each task independently revertable
 - Clear history for AI in future sessions
@@ -169,53 +178,57 @@ hij789k feat(phase-1): implement JWT cookie handling
 
 No "trust me, it works." Every verification produces evidence:
 
-| Change Type   | Evidence Required |
-|--------------|-------------------|
-| API endpoint  | curl output        |
-| UI change     | Screenshot         |
-| Build         | Command output     |
-| Tests         | Test results       |
+| Change Type  | Evidence Required |
+| ------------ | ----------------- |
+| API endpoint | curl output       |
+| UI change    | Screenshot        |
+| Build        | Command output    |
+| Tests        | Test results      |
 
 ---
 
 ## 🎮 Commands (25 Total)
 
 ### Core Workflow
-| Command | Purpose |
-|---------|---------|
-| `/map` | Analyze codebase → ARCHITECTURE.md |
-| `/plan [N]` | Create PLAN.md files for phase N |
-| `/execute [N]` | Wave-based execution with atomic commits |
-| `/verify [N]` | Must-haves validation with proof |
-| `/debug [desc]` | Systematic debugging (3-strike rule) |
+
+| Command         | Purpose                                  |
+| --------------- | ---------------------------------------- |
+| `/map`          | Analyze codebase → ARCHITECTURE.md       |
+| `/plan [N]`     | Create PLAN.md files for phase N         |
+| `/execute [N]`  | Wave-based execution with atomic commits |
+| `/verify [N]`   | Must-haves validation with proof         |
+| `/debug [desc]` | Systematic debugging (3-strike rule)     |
 
 ### Project Setup
-| Command | Purpose |
-|---------|---------|
-| `/new-project` | Deep questioning → SPEC.md |
-| `/new-milestone` | Create milestone with phases |
-| `/complete-milestone` | Archive completed milestone |
-| `/audit-milestone` | Review milestone quality |
+
+| Command               | Purpose                      |
+| --------------------- | ---------------------------- |
+| `/new-project`        | Deep questioning → SPEC.md   |
+| `/new-milestone`      | Create milestone with phases |
+| `/complete-milestone` | Archive completed milestone  |
+| `/audit-milestone`    | Review milestone quality     |
 
 ### Phase Management
-| Command | Purpose |
-|---------|---------|
-| `/add-phase` | Add phase to end of roadmap |
-| `/insert-phase` | Insert phase (renumbers) |
-| `/remove-phase` | Remove phase (safety checks) |
-| `/discuss-phase` | Clarify scope before planning |
-| `/research-phase` | Deep technical research |
-| `/list-phase-assumptions` | Surface planning assumptions |
-| `/plan-milestone-gaps` | Create gap closure plans |
+
+| Command                   | Purpose                       |
+| ------------------------- | ----------------------------- |
+| `/add-phase`              | Add phase to end of roadmap   |
+| `/insert-phase`           | Insert phase (renumbers)      |
+| `/remove-phase`           | Remove phase (safety checks)  |
+| `/discuss-phase`          | Clarify scope before planning |
+| `/research-phase`         | Deep technical research       |
+| `/list-phase-assumptions` | Surface planning assumptions  |
+| `/plan-milestone-gaps`    | Create gap closure plans      |
 
 ### Navigation & State
-| Command | Purpose |
-|---------|---------|
-| `/progress` | Show current position |
-| `/pause` | Save state for session handoff |
-| `/resume` | Restore from last session |
-| `/add-todo` | Quick capture idea |
-| `/check-todos` | List pending items |
+
+| Command        | Purpose                        |
+| -------------- | ------------------------------ |
+| `/progress`    | Show current position          |
+| `/pause`       | Save state for session handoff |
+| `/resume`      | Restore from last session      |
+| `/add-todo`    | Quick capture idea             |
+| `/check-todos` | List pending items             |
 
 ---
 
@@ -245,12 +258,12 @@ GSD forces **planning before coding**. Claude can't write code until `SPEC.md` s
 
 ## 🔒 Core Rules
 
-| Rule | Why It Matters |
-|------|----------------|
-| 🔒 **Planning Lock** | No code until SPEC.md is FINALIZED — prevents building wrong thing |
-| 💾 **State Persistence** | Update STATE.md after every task — memory across sessions |
-| 🧹 **Context Hygiene** | 3 failures → state dump → fresh session — prevents circular debugging |
-| ✅ **Empirical Validation** | Proof required — no "it should work" |
+| Rule                        | Why It Matters                                                        |
+| --------------------------- | --------------------------------------------------------------------- |
+| 🔒 **Planning Lock**        | No code until SPEC.md is FINALIZED — prevents building wrong thing    |
+| 💾 **State Persistence**    | Update STATE.md after every task — memory across sessions             |
+| 🧹 **Context Hygiene**      | 3 failures → state dump → fresh session — prevents circular debugging |
+| ✅ **Empirical Validation** | Proof required — no "it should work"                                  |
 
 ---
 
@@ -292,13 +305,12 @@ GSD-STYLE.md          # Complete style guide
 
 ---
 
-
-
 ## 🧪 Testing
 
 Run validation scripts to verify GSD structure:
 
 **PowerShell:**
+
 ```powershell
 .\scripts\validate-all.ps1      # Run all validators
 .\scripts\validate-workflows.ps1  # Workflows only
@@ -306,6 +318,7 @@ Run validation scripts to verify GSD structure:
 ```
 
 **Bash:**
+
 ```bash
 ./scripts/validate-all.sh      # Run all validators
 ./scripts/validate-workflows.sh  # Workflows only
@@ -332,4 +345,4 @@ Run validation scripts to verify GSD structure:
 
 ---
 
-*Adapted from [glittercowboy/get-shit-done](https://github.com/glittercowboy/get-shit-done) for Google Antigravity*
+_Adapted from [glittercowboy/get-shit-done](https://github.com/glittercowboy/get-shit-done) for Google Antigravity_

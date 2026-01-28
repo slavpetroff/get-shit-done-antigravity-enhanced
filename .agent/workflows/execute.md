@@ -214,9 +214,26 @@ For each plan in the current wave:
         echo "Reviewer Verdict: $REVIEW"
         ```
 
-     2. **Ask User**: "Apply proposed improvement? [y/N]"
-     3. **If Yes**: Apply the change to the skill/workflow.
-     4. **Retry Verification**: Run `<verify>` again.
+     2. **Agent Instruction (CRITICAL)**:
+        - **READ** the JSON output from the command above.
+        - **PRESENT** a Markdown summary to the user:
+
+          ````markdown
+          ## 🛠️ Self-Correction Proposed
+
+          **Diagnosis**: {diagnosis}
+          **Rationale**: {rationale}
+
+          ### Suggested Fix ({target_file})
+
+          ```diff
+          {suggested_change}
+          ```
+          ````
+
+        - **ASK** the user: "Apply this fix? [y/N]"
+
+     3. **If User Approves**: Apply the change and retry verification.
 
 1. **Commit per task:**
    ```bash
