@@ -12,12 +12,12 @@
 
 ### Phase 1: Research Context Logging & Verification
 
-**Status**: ⬜ Not Started
+**Status**: ✅ Complete
 **Objective**: Investigate methods to capture or simulate the exact context (system prompt + user prompt + injected skills) sent to the LLM.
 
 ### Phase 2: Build Context Inspector Tools
 
-**Status**: ⬜ Not Started
+**Status**: ✅ Complete
 **Objective**: Create tooling to generate "dry run" prompts and analyze their token count and formatting.
 
 ### Phase 3: Validation Protocol & Stress Testing
