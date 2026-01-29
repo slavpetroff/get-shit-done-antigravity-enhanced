@@ -176,24 +176,15 @@ For each plan in the current wave:
 
 1. **Load plan context** — Read only the PLAN.md file
 1. **Load plan context** — Read only the PLAN.md file
-1. **Context Recall** — Run `python3 scripts/recall_context.py "{plan-objective}"`
-   - _Injects: Architecture (Memory), Skills, MCPs, and Library Intelligence._
-1. **Determine Task Persona**
-
-   **Bash:**
+1. **Load plan context** — Read only the PLAN.md file
+1. **Context/Persona Dispatch** — Run:
 
    ```bash
    TASK_TYPE=$(echo "$TASK_BLOCK" | python3 scripts/gsd_extract_task_type.py)
-   if [ "$TASK_TYPE" == "research" ]; then
-       cat .agent/personas/researcher.md
-   elif [ "$TASK_TYPE" == "verify" ]; then
-       cat .agent/personas/reviewer.md
-   else
-       cat .agent/personas/implementer.md
-   fi
+   python3 scripts/dispatch_agent.py "$TASK_TYPE" "{task-objective}"
    ```
 
-   _Injected persona instructions into context._
+   _This aggregates Architecture, Skills, MCPs, and Library Intelligence into an active System Directive._
 
 1. **Execute tasks** — Follow `<task>` blocks in order
 1. **Verify each task** — Run `<verify>` commands

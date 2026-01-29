@@ -2,6 +2,7 @@
 import os
 import sys
 import subprocess
+import json
 
 # Unified Context Recall Script
 # Aggregates:
@@ -17,56 +18,61 @@ def print_banner(title):
 def recall_architecture():
     arch_file = ".gsd/ARCHITECTURE.md"
     if os.path.exists(arch_file):
-        print_banner("ARCHITECTURE (MEMORY)")
-        try:
-            with open(arch_file, 'r') as f:
-                print(f.read())
-        except Exception as e:
-            print(f"Error reading architecture: {e}")
-    else:
-        # Graceful fallback - maybe project is new
-        pass
+        with open(arch_file, 'r') as f:
+            return f.read()
+    return ""
 
 def recall_skills(args):
-    print_banner("RELEVANT SKILLS & MCPS")
     script = "scripts/gsd_select.py"
     if os.path.exists(script):
-        # Pass through all arguments to gsd_select
         cmd = [sys.executable, script] + args
         try:
             result = subprocess.run(cmd, capture_output=True, text=True)
-            print(result.stdout)
-            if result.stderr:
-                print(f"Skill Selection Warnings:\n{result.stderr}", file=sys.stderr)
+            return result.stdout
         except Exception as e:
-            print(f"Error executing skill selection: {e}")
-    else:
-        print("Skill selection script not found.")
+            return f"Error executing skill selection: {e}"
+    return "Skill selection script not found."
 
 def recall_libraries():
-    print_banner("LIBRARY INTELLIGENCE")
     script = "scripts/read_library_context.py"
     if os.path.exists(script):
         try:
             result = subprocess.run([sys.executable, script], capture_output=True, text=True)
-            print(result.stdout)
-            if result.stderr:
-                 pass # Library script often outputs innocent warnings to stderr
+            return result.stdout
         except Exception as e:
-            print(f"Error reading library context: {e}")
-    else:
-        print("Library intelligence script not found.")
+            return f"Error reading library context: {e}"
+    return "Library intelligence script not found."
 
 def main():
-    # 1. Recall Architecture (Memory)
-    recall_architecture()
-    
-    # 2. Recall Skills (Contextual)
-    # Pass command line args (objectives) to skill selector
-    recall_skills(sys.argv[1:])
-    
-    # 3. Recall Library Intelligence (Contextual)
-    recall_libraries()
+    use_json = "--json" in sys.argv
+    clean_args = [a for a in sys.argv[1:] if a != "--json"]
+
+    arch = recall_architecture()
+    skills_output = recall_skills(clean_args)
+    libs = recall_libraries()
+
+    if use_json:
+        # Attempt to parse skills_output as it's usually JSON from gsd_select.py
+        try:
+            skills_data = json.loads(skills_output)
+        except:
+            skills_data = {"raw": skills_output}
+
+        data = {
+            "architecture": arch,
+            "skills_mcps": skills_data,
+            "library_intelligence": libs
+        }
+        print(json.dumps(data, indent=2))
+    else:
+        print_banner("ARCHITECTURE (MEMORY)")
+        print(arch if arch else "No architecture memory found.")
+        
+        print_banner("RELEVANT SKILLS & MCPS")
+        print(skills_output)
+        
+        print_banner("LIBRARY INTELLIGENCE")
+        print(libs)
 
 if __name__ == "__main__":
     main()

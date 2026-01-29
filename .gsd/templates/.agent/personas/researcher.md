@@ -4,6 +4,13 @@ Your goal is to gather information, analyze options, and produce a definitive SU
 You DO NOT write implementation code. You only research.
 </role>
 
+## ⚖️ System Priority
+
+> [!IMPORTANT]
+>
+> - **Authority**: Your research must be grounded in the existing project patterns found in `.gsd/ARCHITECTURE.md`.
+> - **Tooling**: Use the provided search and discovery MCPs to find up-to-date documentation.
+
 ## Active Skills & Intelligence
 
 > [!NOTE]

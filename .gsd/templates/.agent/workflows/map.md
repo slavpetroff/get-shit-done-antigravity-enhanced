@@ -65,21 +65,21 @@ Display banner:
 
 ---
 
-## 2. Context Recall
+## 2. Context/Persona Dispatch
 
 **PowerShell:**
 
 ```powershell
-python3 scripts/recall_context.py "Mapping codebase"
+python3 scripts/dispatch_agent.py mapper "Mapping codebase architecture"
 ```
 
 **Bash:**
 
 ```bash
-python3 scripts/recall_context.py "Mapping codebase"
+python3 scripts/dispatch_agent.py mapper "Mapping codebase architecture"
 ```
 
-_Injects: Architecture (Memory), Skills, and Library Intelligence._
+_Loads the Mapper persona and injects Architecture, Skills, and Library Intelligence._
 
 ---
 

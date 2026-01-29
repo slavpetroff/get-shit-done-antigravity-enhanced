@@ -1,0 +1,8 @@
+{"timestamp": 1769691974.463051, "pid": 32629, "context": "Test objective", "selected_ids": [], "fragment_length": 0, "full_fragment": []}
+{"timestamp": 1769692139.6618938, "pid": 33094, "context": "test", "selected_ids": [], "fragment_length": 0, "full_fragment": []}
+{"timestamp": 1769692155.62131, "pid": 33407, "context": "Analyze this repo", "selected_ids": [], "fragment_length": 0, "full_fragment": []}
+{"timestamp": 1769692155.84144, "pid": 33601, "context": "Analyze this repo", "selected_ids": [], "fragment_length": 0, "full_fragment": []}
+{"timestamp": 1769692156.18162, "pid": 33927, "context": "Write code", "selected_ids": [], "fragment_length": 0, "full_fragment": []}
+{"timestamp": 1769692156.3968792, "pid": 34109, "context": "Write code", "selected_ids": [], "fragment_length": 0, "full_fragment": []}
+{"timestamp": 1769692156.745343, "pid": 34423, "context": "Check PR", "selected_ids": [], "fragment_length": 0, "full_fragment": []}
+{"timestamp": 1769692170.144764, "pid": 35011, "context": "Fix bug", "selected_ids": [], "fragment_length": 0, "full_fragment": []}

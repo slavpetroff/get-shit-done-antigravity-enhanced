@@ -232,21 +232,21 @@ Create `$PHASE_DIR/RESEARCH.md` with findings.
 
 ---
 
-## 6. Context Recall
+## 6. Context/Persona Dispatch
 
 **PowerShell:**
 
 ```powershell
-python3 scripts/recall_context.py "Phase $PHASE planning"
+python3 scripts/dispatch_agent.py planner "Phase $PHASE planning"
 ```
 
 **Bash:**
 
 ```bash
-python3 scripts/recall_context.py "Phase $PHASE planning"
+python3 scripts/dispatch_agent.py planner "Phase $PHASE planning"
 ```
 
-_Injects: Architecture (Memory), Skills, and Library Intelligence._
+_Loads the Planner persona and injects Architecture, Skills, and Library Intelligence._
 
 ---
 
